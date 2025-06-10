@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introvert/Extrovert Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f0f4f8 0%, #c9e7fa 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: #fff;
+            max-width: 420px;
+            margin: 60px auto 0 auto;
+            padding: 36px 32px 32px 32px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(60, 120, 180, 0.15);
+        }
+        h1 {
+            text-align: center;
+            color: #2a5d8f;
+            margin-bottom: 28px;
+            font-size: 2.1rem;
+            letter-spacing: 1px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        label {
+            font-weight: 500;
+            color: #2a5d8f;
+            margin-bottom: 4px;
+        }
+        input[type="text"], select {
+            padding: 8px 10px;
+            border: 1px solid #b3c6d6;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f7fbfd;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus, select:focus {
+            border: 1.5px solid #2a5d8f;
+            outline: none;
+        }
+        button[type="submit"] {
+            background: linear-gradient(90deg, #2a5d8f 0%, #4fc3f7 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(60, 120, 180, 0.08);
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #1b3c5d 0%, #29b6f6 100%);
+        }
+        .result {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #1b3c5d;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Introvert/Extrovert Predictor</h1>
+        <form action="/predict" method="post">
+            <label for="feature1">Time_spent_Alone (Rate from 1 to 10):</label>
+            <input type="text" id="feature1" name="feature1" required>
+
+            <label for="feature2">Stage_fear (Yes/No):</label>
+            <select id="feature2" name="feature2" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="feature3">Social_event_attendance (Rate from 1 to 10):</label>
+            <input type="text" id="feature3" name="feature3" required>
+
+            <label for="feature4">Going_outside (Rate from 1 to 10):</label>
+            <input type="text" id="feature4" name="feature4" required>
+
+            <label for="feature5">Drained_after_socializing (Yes/No):</label>
+            <select id="feature5" name="feature5" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="feature6">Friends_circle_size (Rate from 1 to 10):</label>
+            <input type="text" id="feature6" name="feature6" required>
+
+            <label for="feature7">Post_frequency (Rate from 1 to 10):</label>
+            <input type="text" id="feature7" name="feature7" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
