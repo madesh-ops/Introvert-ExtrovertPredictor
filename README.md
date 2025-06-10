@@ -2,6 +2,10 @@
 
 This project is a machine learning web application that predicts whether a person is an introvert or extrovert based on their responses to a set of features. The project consists of a Jupyter notebook for model training and a Flask web app for user interaction and prediction.
 
+![image](https://github.com/user-attachments/assets/811ac2f8-29c6-48d9-9523-c50061d34b02)
+
+
+
 ## Project Structure
 
 - `classification.ipynb`: Jupyter notebook for data preprocessing, model training, and saving the trained model and preprocessors.
